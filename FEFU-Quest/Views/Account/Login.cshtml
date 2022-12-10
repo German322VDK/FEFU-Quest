@@ -1,0 +1,20 @@
+﻿@model LoginViewModel
+
+@{
+    //Layout = "LoginLayout";
+    ViewData["Title"] = "Вход в систему";
+}
+
+<form asp-action="Login" asp-antiforgery="true" asp-route-ReturnUrl="@Model.ReturnUrl" class="">
+    <div class="link_line">
+        <p>Email:</p>
+        <input type="email" placeholder="email" class="input" asp-for="Email" />
+    </div>
+    <div class="link_line">
+        <p>Password:</p>
+        <input type="password" placeholder="password" class="input" asp-for="Password" />
+    </div>
+    <div class="link">
+        <button name="get_log" class="btn_log" onclick="Lol()">OK</button>
+    </div>
+</form>
