@@ -56,112 +56,106 @@ namespace FEFU_Quest.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterUserViewModel Model)
         {
-            if (Model is null || string.IsNullOrEmpty(Model.Email) || _emailConfirm.Get(Model.Email) is null)
-            {
-                _logger.LogWarning("Какой то конченный хотел меня обмануть");
+            //if (Model is null || string.IsNullOrEmpty(Model.Email) || _emailConfirm.Get(Model.Email) is null)
+            //{
+            //    _logger.LogWarning("Какой то конченный хотел меня обмануть");
 
-                return RedirectToAction("RegisterStart", "Account");
-            }
+            //    return RedirectToAction("RegisterStart", "Account");
+            //}
 
-            var userNameIsExist = CheckUserName(Model.UserName);
+            //var userNameIsExist = CheckUserName(Model.UserName);
 
-            var emailIsExist = CheckEmailName(Model.Email);
+            //var emailIsExist = CheckEmailName(Model.Email);
 
-            if (userNameIsExist)
-            {
-                _logger.LogWarning($"Тип с почтой {Model.Email} пытается забрать существующий {nameof(Model.UserName)}: {Model.UserName}");
+            //if (userNameIsExist)
+            //{
+            //    _logger.LogWarning($"Тип с почтой {Model.Email} пытается забрать существующий {nameof(Model.UserName)}: {Model.UserName}");
 
-                ModelState["UserName"].Errors.Add(new Exception("Логин обязателен и не должен использоваться другими"));
-                ModelState["UserName"].ValidationState = ModelValidationState.Invalid;
-            }
+            //    ModelState["UserName"].Errors.Add(new Exception("Логин обязателен и не должен использоваться другими"));
+            //    ModelState["UserName"].ValidationState = ModelValidationState.Invalid;
+            //}
 
-            if (emailIsExist)
-            {
-                _logger.LogWarning($"Тип с ником {Model.UserName} пытается забрать существующую почту {Model.Email}");
+            //if (emailIsExist)
+            //{
+            //    _logger.LogWarning($"Тип с ником {Model.UserName} пытается забрать существующую почту {Model.Email}");
 
-                return RedirectToAction("RegisterStart", "Account");
-            }
+            //    return RedirectToAction("RegisterStart", "Account");
+            //}
 
 
-            if (!ModelState.IsValid)
-                return View(Model);
+            //if (!ModelState.IsValid)
+            //    return View(Model);
 
-            _logger.LogInformation("Регистрация пользователя {0}", Model.UserName);
+            //_logger.LogInformation("Регистрация пользователя {0}", Model.UserName);
 
-            using (_logger.BeginScope($"Регистрация пользователя {Model.UserName}"))
-            {
-                var user = new UserDTO
-                {
-                    UserName = Model.UserName,
-                    FirstName = Model.FirstName,
-                    SecondName = Model.SecondName,
-                    Status = "",
-                    Email = Model.Email,
-                    SocNetItems = new SocNetEntityUser
-                    {
-                        X = 0,
-                        Y = 0,
-                        CurrentImage = 1
-                    },
-                };
+            //using (_logger.BeginScope($"Регистрация пользователя {Model.UserName}"))
+            //{
+            //    var user = new UserDTO
+            //    {
+            //        UserName = Model.UserName,
+            //        FirstName = Model.FirstName,
+            //        SecondName = Model.SecondName,
+            //        Status = "",
+            //        Email = Model.Email,
+            //    };
 
-                var registration_result = await _userManager.CreateAsync(user, Model.Password);
+            //    var registration_result = await _userManager.CreateAsync(user, Model.Password);
 
-                if (registration_result.Succeeded)
-                {
-                    _logger.LogInformation("Пользователь {0} успешно зарегестрирован", Model.UserName);
+            //    if (registration_result.Succeeded)
+            //    {
+            //        _logger.LogInformation("Пользователь {0} успешно зарегестрирован", Model.UserName);
 
-                    if (string.IsNullOrEmpty(Model.AdminRolePassword) || Model.AdminRolePassword != Passwords.Admin)
-                    {
-                        await _userManager.AddToRoleAsync(user, UserStatus.User.ToString());
+            //        if (string.IsNullOrEmpty(Model.AdminRolePassword) || Model.AdminRolePassword != Passwords.Admin)
+            //        {
+            //            await _userManager.AddToRoleAsync(user, UserStatus.User.ToString());
 
-                        _logger.LogInformation("Пользователь {0} наделён ролью {1}", Model.UserName, UserStatus.User);
-                    }
-                    else
-                    {
-                        await _userManager.AddToRoleAsync(user, UserStatus.Admin.ToString());
+            //            _logger.LogInformation("Пользователь {0} наделён ролью {1}", Model.UserName, UserStatus.User);
+            //        }
+            //        else
+            //        {
+            //            await _userManager.AddToRoleAsync(user, UserStatus.Admin.ToString());
 
-                        _logger.LogInformation("Пользователь {0} наделён ролью {1}", Model.UserName, UserStatus.Admin);
-                    }
-                    await _signInManager.SignInAsync(user, false);
+            //            _logger.LogInformation("Пользователь {0} наделён ролью {1}", Model.UserName, UserStatus.Admin);
+            //        }
+            //        await _signInManager.SignInAsync(user, false);
 
-                    var arr = NewImageMethods.GetByteArrFromFile("wwwroot/photo/def/anon.jpg");
+            //        var arr = NewImageMethods.GetByteArrFromFile("wwwroot/photo/def/anon.jpg");
 
-                    _user.AddPhoto(arr, user.UserName);
+            //        _user.AddPhoto(arr, user.UserName);
 
-                    var result = _chat.CreateChat(Model.UserName, Model.UserName);
+            //        var result = _chat.CreateChat(Model.UserName, Model.UserName);
 
-                    if (!result)
-                    {
-                        _logger.LogWarning($"Не удалось типу {Model.UserName} содать чат с самим собой (");
-                    }
-                    else
-                    {
-                        _logger.LogInformation($"Удалось типу {Model.UserName} содать чат с самим собой");
-                    }
+            //        if (!result)
+            //        {
+            //            _logger.LogWarning($"Не удалось типу {Model.UserName} содать чат с самим собой (");
+            //        }
+            //        else
+            //        {
+            //            _logger.LogInformation($"Удалось типу {Model.UserName} содать чат с самим собой");
+            //        }
 
-                    var addGrouPresult = _group.Sub("offgroup", user.UserName);
+            //        var addGrouPresult = _group.Sub("offgroup", user.UserName);
 
-                    if (!addGrouPresult)
-                    {
-                        _logger.LogWarning($"Не удалось типа {Model.UserName} подписать на официальную группу (");
-                    }
-                    else
-                    {
-                        _logger.LogInformation($"Удалось типа {Model.UserName} подписать на официальную группу");
-                    }
+            //        if (!addGrouPresult)
+            //        {
+            //            _logger.LogWarning($"Не удалось типа {Model.UserName} подписать на официальную группу (");
+            //        }
+            //        else
+            //        {
+            //            _logger.LogInformation($"Удалось типа {Model.UserName} подписать на официальную группу");
+            //        }
 
-                    return RedirectToAction("Index", "News");
-                }
+            //        return RedirectToAction("Index", "News");
+            //    }
 
-                _logger.LogWarning("В процессе регистрации пользователя {0} возникли ошибки :( {1}",
-                    Model.UserName, string.Join(",", registration_result.Errors.Select(e => e.Description)));
+            //    _logger.LogWarning("В процессе регистрации пользователя {0} возникли ошибки :( {1}",
+            //        Model.UserName, string.Join(",", registration_result.Errors.Select(e => e.Description)));
 
-                foreach (var errors in registration_result.Errors)
-                {
-                    ModelState.AddModelError("", errors.Description);
-                }
-            }
+            //    foreach (var errors in registration_result.Errors)
+            //    {
+            //        ModelState.AddModelError("", errors.Description);
+            //    }
+            //}
 
             return View(Model);
         }
