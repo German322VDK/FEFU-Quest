@@ -13,11 +13,16 @@ function togglePassword() {
 
 async function GetHash(act1, act2, act3, emailAdd, url) {
 
+    var email = document.getElementById(emailAdd).value;
+
+    if (email == null || email == '') {
+        alert('You have not entered an email');
+        return;
+    }
+
     document.getElementById(act1).style = "display:none";
     document.getElementById(act2).style = "display:none";
     document.getElementById(act3).style = "display:none";
-
-    var email = document.getElementById(emailAdd).value;
 
     var fullurl = url + "?email=" + email;
 
@@ -29,7 +34,7 @@ async function GetHash(act1, act2, act3, emailAdd, url) {
         document.getElementById(act2).style = "display:block";
         document.getElementById(act1).style = "display:none";
         document.getElementById('but1').style = "display:none";
-        document.getElementById('but2').style = "display:block";
+        document.getElementById('but2').style = "display:initial";
     }
     else {
         document.getElementById(act1).style = "display:block";

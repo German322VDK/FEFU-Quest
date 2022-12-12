@@ -5,7 +5,7 @@
     var url2 = APIUrls.CONFIRM_EMAIL;
 }
 
-<div>
+<div >
     <form asp-action="Register" asp-antiforgery="true" class="" id="form" style="display:none">
         <div class="link_line">
             <p>Email:</p>
@@ -15,24 +15,24 @@
             <button name="get_log" class="btn_log" style="width:auto;" id="regIn">Войти</button>
         </div>
     </form>
-    <div id="act1" class="regs__vved">
+    <div id="act1" class="regs__vved" style="text-align: center;">
         <input type="text" placeholder="Введите почту" id="RegEmail" class="input">
     </div>
-    <div id="act2" style="display:none">
-        <div class="regs__vved">
+    <div id="act2" style="display:none; margin-left:auto; margin-right: auto;">
+        <div style="text-align: center;">
             <p class="regs__vved">Мы отправили вам код подтверждения, пожалуйста введите его (Он может быть в спаме) </p>
             <input type="text" placeholder="Код" id="Hash" class="reg_data_input">
             <div class="">
-                <button type="submit" class="btn_log" id="nextdoor" name="register" style="display: none" onclick="RegInput()">
+                <button type="submit" class="btn_log" id="nextdoor" name="register" style="display:none; width:auto;" onclick="RegInput()">
                     <span class="">Войти</span>
                 </button>
             </div>
         </div>
     </div>
     <div id="act3" class="" style="display:none"><p>Почта уже существует или что то пошло не так(</p></div>
-
-    <button class="btn_log" id="but1" onclick="GetHash('act1', 'act2', 'act3', 'RegEmail', '/@url1')">Получить код</button>
-    <button class="btn_log" id="but2" style="display:none" onclick="Confirm('RegEmail', 'Hash', '/@url2')">Ввести код</button>
-
+    <div style="text-align: center;">
+        <button class="btn_log" id="but1" style="width:auto;" onclick="GetHash('act1', 'act2', 'act3', 'RegEmail', '/@url1')">Получить код</button>
+        <button class="btn_log" id="but2" style="display:none; width:auto;" onclick="Confirm('RegEmail', 'Hash', '/@url2')">Ввести код</button>
+    </div>
     <p style="display:none" id="finaler">Не верный код(</p>
 </div>
