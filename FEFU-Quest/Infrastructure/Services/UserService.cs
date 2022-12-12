@@ -24,5 +24,28 @@ namespace FEFU_Quest.Infrastructure.Services
 
         public UserDTO GetByEmail(string email) =>
             GetAll().FirstOrDefault(us => us.Email == email);
+
+        public bool AddPhoto(byte[] image, string userName)
+        {
+            var user = Get(userName);
+
+            if (user is null || image is null)
+                return false;
+
+
+            using (_db.Database.BeginTransaction())
+            {
+                _db.Users
+                    .FirstOrDefault(us => us.UserName == userName)
+                    .Photo = image;
+
+                _db.SaveChanges();
+
+                _db.Database.CommitTransaction();
+            }
+
+
+            return true;
+        }
     }
 }

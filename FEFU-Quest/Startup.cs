@@ -43,7 +43,7 @@ namespace FEFU_Quest
             //services.AddTransient<IFriends, FriendsService>();
             //services.AddTransient<IChat, ChatService>();
             //services.AddTransient<IGroupChat, GroupChatService>();
-            //services.AddTransient<IGroup, GroupService>();
+            services.AddTransient<IUniverGroup, UniverGroupService>();
             //services.AddTransient<IClash, ClashService>();
             services.AddTransient<IEmailConfirm, EmailConfirmService>();
 

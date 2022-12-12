@@ -1,3 +1,56 @@
-﻿@model RegisterStartViewModel
+﻿@model RegisterUserViewModel
 @{
 }
+
+<form asp-action="Register" asp-antiforgery="true" class="" id="form">
+    <p class="reg__p">Ваш email: @Model.Email</p>
+
+    <p style="display:none;">
+        <input asp-for="Email" placeholder="Секретный код админа (если есть)" class="" value="@Model.Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </p>
+
+    <div class="link_line">
+        <p>UserName:</p>
+        <input class="input" asp-for="UserName" />
+    </div>
+
+    <div class="link_line">
+        <p>Фамилия:</p>
+        <input class="input" asp-for="SecondName" />
+    </div>
+
+    <div class="link_line">
+        <p>Имя:</p>
+        <input class="input" asp-for="FirstName" />
+    </div>
+
+    <div class="link_line">
+        <p>Отчество:</p>
+        <input  class="input" asp-for="Patr" />
+    </div>
+
+    <div class="link_line">
+        <p>Общежитие:</p>
+        <input class="input" asp-for="Dormitory" />
+    </div>
+
+    <div class="link_line">
+        <p>Группа универа:</p>
+        <input class="input" asp-for="UniverGroup" />
+    </div>
+
+    <div class="link_line">
+        <p>Пароль:</p>
+        <input type="password" placeholder="password" class="input" asp-for="Password" />
+    </div>
+
+    <div class="link_line">
+        <p>Пароль:</p>
+        <input type="password" placeholder="password" class="input" asp-for="PasswordConfirm" />
+    </div>
+
+    <div class="link">
+        <button name="get_log" class="btn_log" style="width:auto;" id="regIn">Зарегистрироваться</button>
+    </div>
+</form>

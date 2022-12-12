@@ -11,5 +11,7 @@ namespace FEFU_Quest.Infrastructure.Interfaces
         public UserDTO Get(string userName);
 
         public UserDTO GetByEmail(string email);
+
+        public bool AddPhoto(byte[] image, string userName);
     }
 }
