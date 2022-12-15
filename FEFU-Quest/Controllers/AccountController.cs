@@ -32,6 +32,7 @@ namespace FEFU_Quest.Controllers
             _emailConfirm = emailConfirm;
             _univerGroup = univerGroup;
         }
+        
 
         #region Register
 
@@ -224,10 +225,10 @@ namespace FEFU_Quest.Controllers
 
             var userName = User.Identity.Name;
 
-            //if (userName is null || _user.Get(userName) is null)
-            //{
-            //    _logger.LogWarning("Опять эти куки пытаются не существующего пользователя куда-то отправить");
-            //}
+            if (userName is null || _user.Get(userName) is null)
+            {
+                _logger.LogWarning("Опять эти куки пытаются не существующего пользователя куда-то отправить");
+            }
 
             _logger.LogWarning($"Тип {userName} хотел попасть на {ReturnUrl}");
 
