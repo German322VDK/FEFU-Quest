@@ -117,7 +117,9 @@ namespace FEFU_Quest.Controllers
                     Dormitory = Model.Dormitory,
                     UniverGroup = group,
                 };
-
+                ////менять пароль await _userManager.GeneratePasswordResetTokenAsync(user) - токен
+                //await _userManager.ResetPasswordAsync(user, await _userManager.GeneratePasswordResetTokenAsync(user), Model.Password);
+               
                 var registration_result = await _userManager.CreateAsync(user, Model.Password);
 
                 if (registration_result.Succeeded)

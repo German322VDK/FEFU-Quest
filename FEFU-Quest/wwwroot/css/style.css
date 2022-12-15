@@ -211,3 +211,8 @@ body {
     line-height: 5px;
     padding-left: 10px;
 }
+
+.whbut {
+    width: 20%;
+    height: 20%;
+}
