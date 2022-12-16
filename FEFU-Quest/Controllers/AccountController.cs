@@ -1,12 +1,14 @@
 ﻿using FEFU_Quest.Domain.Identity;
 using FEFU_Quest.Infrastructure.Interfaces;
 using FEFU_Quest.Infrastructure.Methods;
+using FEFU_Quest.Models.Static;
 using FEFU_Quest.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -32,7 +34,12 @@ namespace FEFU_Quest.Controllers
             _emailConfirm = emailConfirm;
             _univerGroup = univerGroup;
         }
-        
+
+        ////меняем пароль
+        //_userManager.ChangePasswordAsync(user, "", "");
+        ////сбрасываем пароль, генерация - await _userManager.GeneratePasswordResetTokenAsync(user) - токен
+        //await _userManager.ResetPasswordAsync(user, await _userManager.GeneratePasswordResetTokenAsync(user), Model.Password);
+
 
         #region Register
 
@@ -40,7 +47,7 @@ namespace FEFU_Quest.Controllers
         public IActionResult RegisterStart()
         {
             _logger.LogInformation("Кто-то пытается зарегестрироваться!");
-
+            
             return View(new RegisterStartViewModel
             {
 
@@ -117,9 +124,7 @@ namespace FEFU_Quest.Controllers
                     Dormitory = Model.Dormitory,
                     UniverGroup = group,
                 };
-                ////менять пароль await _userManager.GeneratePasswordResetTokenAsync(user) - токен
-                //await _userManager.ResetPasswordAsync(user, await _userManager.GeneratePasswordResetTokenAsync(user), Model.Password);
-               
+                
                 var registration_result = await _userManager.CreateAsync(user, Model.Password);
 
                 if (registration_result.Succeeded)
@@ -212,13 +217,68 @@ namespace FEFU_Quest.Controllers
 
         #endregion
 
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult RestorePasswordStart() =>
+            View(new RestorePasswordStartViewModel { });
+
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RestorePasswordStart(RestorePasswordStartViewModel model)
+        {
+            if(model is null || string.IsNullOrEmpty(model.Email))
+                return RedirectToAction("RestorePasswordStart", "Account");
+
+            var curUser = _user.GetByEmail(model.Email);
+
+            if(curUser is null)
+                return RedirectToAction("RestorePasswordStart", "Account");
+
+            string token = await _userManager.GeneratePasswordResetTokenAsync(curUser);
+
+            string callbackUrl = Url.Action("RestorePassword", "Account", new { email = model.Email, code = token }, protocol: HttpContext.Request.Scheme);
+
+            var resultSending = await SendMailMethods.SendEmailAsync(Emails.MAIN_EMAIL, Emails.MAIN_NAME, Emails.MAIN_PASS, model.Email, "Востановление пароля",
+            $"<p>Для восстановления <b>пароля</b> перейдите по ссылке: <a href='{callbackUrl}'>Ссылка</a>.</p>");
+
+            return View(model);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult RestorePassword(string email, string code = null)
+        {
+            return code == null ? RedirectToAction("RestorePasswordStart", "Account") : View(new RestorePasswordViewModel { GeneratedToken = code, Email = email });
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RestorePassword(RestorePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var curUser = _user.GetByEmail(model.Email);
+
+            var result = await _userManager.ResetPasswordAsync(curUser, model.GeneratedToken, model.Password);
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+                return View(model);
+
+        }
+
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
 
             _logger.LogInformation("Пользователь вышел");
 
-            return RedirectToAction("Index", "News");
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult AccessDenied(string ReturnUrl)
