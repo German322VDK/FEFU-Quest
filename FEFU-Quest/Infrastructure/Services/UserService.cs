@@ -20,10 +20,11 @@ namespace FEFU_Quest.Infrastructure.Services
             GetAll().FirstOrDefault(us => us.UserName == userName);
 
         public IEnumerable<UserDTO> GetAll() =>
-            _db.Users.AsNoTracking();
+            _db.Users;
 
         public UserDTO GetByEmail(string email) =>
             GetAll().FirstOrDefault(us => us.Email == email);
+
 
         public bool AddPhoto(byte[] image, string userName)
         {
