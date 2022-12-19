@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 
 namespace FEFU_Quest.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly UserManager<UserDTO> _userManager;
@@ -34,12 +35,6 @@ namespace FEFU_Quest.Controllers
             _emailConfirm = emailConfirm;
             _univerGroup = univerGroup;
         }
-
-        ////меняем пароль
-        //_userManager.ChangePasswordAsync(user, "", "");
-        ////сбрасываем пароль, генерация - await _userManager.GeneratePasswordResetTokenAsync(user) - токен
-        //await _userManager.ResetPasswordAsync(user, await _userManager.GeneratePasswordResetTokenAsync(user), Model.Password);
-
 
         #region Register
 
@@ -217,6 +212,8 @@ namespace FEFU_Quest.Controllers
 
         #endregion
 
+        #region RestorePassword
+
         [AllowAnonymous]
         [HttpGet]
         public IActionResult RestorePasswordStart() =>
@@ -271,6 +268,8 @@ namespace FEFU_Quest.Controllers
                 return View(model);
 
         }
+
+        #endregion
 
         public async Task<IActionResult> Logout()
         {

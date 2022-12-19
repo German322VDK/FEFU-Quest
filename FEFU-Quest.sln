@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FEFU-Quest", "FEFU-Quest\FEFU-Quest.csproj", "{B1C16EE6-1B0D-4050-AAAC-068E7D4F663C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FEFU-Quest", "FEFU-Quest\FEFU-Quest.csproj", "{B1C16EE6-1B0D-4050-AAAC-068E7D4F663C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FEFU_Quest.SQlite", "FEFU_Quest.SQlite\FEFU_Quest.SQlite.csproj", "{4C87361F-854D-408C-A796-BF62919C0E0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FEFU_Quest.SQlite", "FEFU_Quest.SQlite\FEFU_Quest.SQlite.csproj", "{4C87361F-854D-408C-A796-BF62919C0E0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FEFU_Quest.Domain", "FEFU_Quest.Domain\FEFU_Quest.Domain.csproj", "{486D495B-04B3-4F1A-8C84-175E0B0036B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FEFU_Quest.Domain", "FEFU_Quest.Domain\FEFU_Quest.Domain.csproj", "{486D495B-04B3-4F1A-8C84-175E0B0036B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

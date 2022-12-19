@@ -27,4 +27,8 @@
     <ProjectReference Include="..\FEFU_Quest.SQlite\FEFU_Quest.SQlite.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Events\" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,31 @@
+﻿@using FEFU_Quest.Domain.Identity
+@using FEFU_Quest.Infrastructure.Methods
+@model UserDTO
+@{
+    var photo = Model.Photo;
+
+    var img = ImageMethods.GetStringFromByteArr(photo);
+
+    var format = ImageMethods.GetFormat(photo);
+}
+
+<div class="">
+    <div class="profil_right__ava text">
+        <img class="profil_right__ava_img" src="data:image/@format;base64,@img" alt="Фото">
+    </div>
+    <div class="text">
+        <p>Email: @Model.Email</p>
+    </div>
+    <div class="text">
+        <p>UserName: @Model.UserName</p>
+    </div>
+    <div class="text">
+        <p>FIO: @Model.SecondName @Model.FirstName @Model.Patronymic</p>
+    </div>
+    <div class="text">
+        <p>Dormitory: @Model.Dormitory</p>
+    </div>
+    <div class="text">
+        <p>UniverGroup: @Model.UniverGroup.GroupName</p>
+    </div>
+</div>

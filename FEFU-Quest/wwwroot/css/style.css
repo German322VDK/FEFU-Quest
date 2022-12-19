@@ -216,3 +216,30 @@ body {
     width: 20%;
     height: 20%;
 }
+
+.text {
+    text-align: center;
+    font-family: Nico_Moji;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 20px;
+    color: #7BF071;
+    text-shadow: 3px 10px 10px rgba(0, 240, 255, 0.46);
+}
+
+.profil_right__conteiner_one {
+    margin-top: 22px;
+    border-radius: 12px;
+}
+
+.profil_right__ava {
+    padding-top: 20px;
+}
+
+.profil_right__ava_img {
+    width: 170px !important;
+    height: 170px !important;
+    object-fit: cover;
+    border-radius: 12px;
+}

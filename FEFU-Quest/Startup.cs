@@ -28,8 +28,6 @@ namespace FEFU_Quest
             services.AddDbContext<FEFU_QuestDBSQlite>(opt => opt
                .UseSqlite(sqliteName)
                .UseLazyLoadingProxies()
-           //opt.UseSqlServer(Configuration.GetConnectionString("SqlServer"))
-           //.UseLazyLoadingProxies()
            );
 
 
@@ -86,6 +84,7 @@ namespace FEFU_Quest
         {
             db.Initialize();
 
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -116,10 +115,10 @@ namespace FEFU_Quest
 
                 //endpoints.MapHub<ClashMessageHub>("/clashchat");
 
-                endpoints.MapControllerRoute(
-                    name: "areas",
-                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                );
+                //endpoints.MapControllerRoute(
+                //    name: "areas",
+                //    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                //);
 
                 endpoints.MapControllerRoute(
                    name: "default",
