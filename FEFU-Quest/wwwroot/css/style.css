@@ -1,27 +1,29 @@
-@font-face{
-    font-family: "Nico_Moji"; 
-    src: url("/Fonts/NicoMoji-Regular.ttf") format("truetype"); 
-    font-style: normal; 
+@font-face {
+    font-family: "Nico_Moji";
+    src: url("../Fonts/NicoMoji-Regular.ttf") format("truetype");
+    font-style: normal;
 }
 
-body {
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-.back{
+
+.back {
     z-index: -1;
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.back img{
-    width: 50%;
-    height: 100vh;
-}
+    .back img {
+        width: 50%;
+        height: 100vh;
+    }
 
-.menu{
+.menu {
     border-radius: 20px;
     display: block;
     z-index: 20;
@@ -35,7 +37,7 @@ body {
     background-color: #6109D2;
 }
 
-.header1{
+.header1 {
     text-align: center;
     font-family: Nico_Moji;
     font-style: normal;
@@ -44,7 +46,8 @@ body {
     line-height: 64px;
     text-shadow: 3px 10px 10px rgba(0, 240, 255, 0.46);
 }
-.line{
+
+.line {
     border-bottom: 2px solid #7BF071;
     filter: blur(1px);
     width: 473px;
@@ -55,55 +58,52 @@ body {
     margin-bottom: 10px;
 }
 
-.link{
+.link {
     text-align: center;
     font-family: Nico_Moji;
     font-style: normal;
     font-weight: 400;
     font-size: 40px;
     line-height: 40px;
-
     color: #7BF071;
     text-shadow: 3px 10px 10px rgba(0, 240, 255, 0.46);
-    
 }
 
-.link_line{
+.link_line {
     font-family: Nico_Moji;
     font-style: normal;
     font-weight: 400;
     font-size: 30px;
     line-height: 5px;
     padding-left: 10px;
-
     color: #7BF071;
     text-shadow: 3px 10px 10px rgba(0, 240, 255, 0.46);
-    display: flex;
-    position: relative;
+   /* display: flex;
+    position: relative;*/
+
+    margin: 20px;
 }
 
-.anti_link{
-    text-decoration : none;
+.anti_link {
+    text-decoration: none;
     color: #7BF071;
     text-shadow: 3px 10px 10px rgba(0, 240, 255, 0.46);
 }
 
-.input{
+.input {
     box-sizing: border-box;
     background: #D9D9D9;
     border: 1px solid #000000;
     border-radius: 5px;
-
     margin-left: 10px;
     height: 10%;
-    margin-top:auto; 
+    margin-top: auto;
     margin-bottom: auto;
-    
     width: 236px;
     height: 31px;
 }
 
-.select_loc{
+.select_loc {
     display: flex;
     z-index: 1;
     position: absolute;
@@ -113,27 +113,18 @@ body {
     justify-content: space-between;
 }
 
-.btn-loc{
+.btn-loc {
     text-align: center;
-    /*width: 20%;
-    height: 20%;*/
+    width: 20%;
+    height: 20%;
     margin: auto;
     background: rgba(97, 9, 210, 0.5);
     border-radius: 20px;
-
-    font-family: Nico_Moji;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 5px;
-    padding-left: 10px;
-
-    color: rgba(123, 240, 113, 0.6);
-
     text-shadow: 0px 7px 4px rgba(255, 0, 229, 0.34);
-    }
+    display: table;
+}
 
-.event_list{
+.event_list {
     margin-left: 10%;
     margin-right: 10%;
     z-index: 2;
@@ -147,13 +138,13 @@ body {
     font-size: 40px;
 }
 
-.event{
+.event {
     margin-top: 10px;
     background-color: blueviolet;
     border-radius: 8px;
 }
 
-.event_inf{
+.event_inf {
     margin-left: 10%;
     margin-right: 10%;
     z-index: 2;
@@ -170,29 +161,494 @@ body {
     border-radius: 10px;
 }
 
-.evnt_inf{
+.evnt_inf {
     display: inline;
 }
 
-.count_users{
+.count_users {
     display: inline;
 }
 
-.event_time{
+.event_time {
     display: inline;
 }
 
-.event_location{
+.event_location {
     display: inline;
 }
 
-.event_join{
+.event_join {
     width: 10%;
     height: 5%;
     margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
 }
+
+.btn_log {
+    color: rgba(123, 240, 113, 1);
+    width: 20%;
+    height: 25px;
+    border-radius: 10px;
+    z-index: 10;
+    margin-bottom: 10px;
+    background-color: #4A0E97;
+    border-color: #4A0E97;
+    font-family: Nico_Moji;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 5px;
+    padding-left: 10px;
+}
+
+/* FefuPage */
+
+.FefuPage_head {
+    padding: 0 22px 0 22px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    background-color: #6109D2;
+    border-radius: 20px;
+    position: absolute;
+}
+
+.FefuPage_head_text {
+    font-family: Nico_Moji;
+    font-style: normal;
+    padding-left: 10px;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 64px;
+    color: #7BF071;
+    text-shadow: 3px 10px 10px rgba(0, 240, 255, 0.46);
+}
+
+.FefuPage_head_arrow {
+    display: block;
+    margin: 10px auto 0 auto;
+}
+
+.FefuPage_date {
+    width: 443px;
+    justify-content: space-between;
+    z-index: 2;
+    top: 120px;
+    display: flex;
+    font-family: Nico_Moji;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 32px;
+    color: #7BF071;
+    text-shadow: 3px 10px 10px rgba(0, 240, 255, 0.46);
+    background-color: #6109D2;
+    border-radius: 30px;
+    padding: 10px 12px;
+    position: absolute;
+}
+
+.FefuPage_date_text {
+    padding: 0 46px 0;
+}
+
+.FefuPage_week {
+    position: absolute;
+    top: 200px;
+    display: flex;
+}
+
+.FefuPage_week_mo, .FefuPage_week_tu, .FefuPage_week_we, .FefuPage_week_th, .FefuPage_week_fr, .FefuPage_week_sa, .FefuPage_week_su {
+    font-family: Nico_Moji;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 48px;
+    color: #7BF071;
+    text-shadow: 3px 10px 10px rgba(0, 240, 255, 0.46);
+    background-color: #6109D2;
+    padding: 3px 26px 7px 27px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.FefuPage_week_active {
+    background-color: #8A48BE;
+}
+/* Герман, класс эктив для кнопок!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+.FefuPage_week_mo, .FefuPage_week_tu, .FefuPage_week_we, .FefuPage_week_th, .FefuPage_week_fr, .FefuPage_week_sa {
+    margin-right: 22px;
+}
+
+.FefuPage_poloska {
+    position: absolute;
+    top: 291px;
+    height: 11px;
+    width: 1256px;
+    background-color: #6109D2;
+    border-radius: 10px;
+}
+
+.FefuPage_variant {
+    position: absolute;
+    top: 330px;
+    width: 1135px;
+    cursor: pointer;
+}
+
+.FefuPage_variant_text {
+    padding: 8px 21px 9px 21px;
+    margin-bottom: 25px;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 48px;
+    color: #7BF071;
+    text-shadow: 3px 10px 10px rgba(0, 240, 255, 0.46);
+    background-color: #6109D2;
+    padding: 3px 26px 7px 27px;
+    border-radius: 10px;
+}
+
+/* DormPage */
+
+.DormPage_ajax {
+    top: 120px;
+    justify-content: space-between;
+    width: 443px;
+    display: flex;
+    font-family: Nico_Moji;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 32px;
+    color: #7BF071;
+    text-shadow: 3px 10px 10px rgba(0, 240, 255, 0.46);
+    background-color: #6109D2;
+    border-radius: 30px;
+    padding: 3px 12px;
+    position: absolute;
+}
+
+.DormPage_korpus {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 180px;
+}
+
+.DormPage_korpus1, .DormPage_korpus2 {
+    display: flex;
+}
+
+.DormPage_korpus1 {
+    margin-bottom: 30px;
+}
+
+.DormPage_k1, .DormPage_k2 {
+    font-family: Nico_Moji;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 48px;
+    color: #7BF071;
+    text-shadow: 3px 10px 10px rgba(0, 240, 255, 0.46);
+    background-color: #6109D2;
+    border-radius: 10px;
+    width: 120px;
+    text-align: center;
+}
+
+    .DormPage_k1:not(:last-child), .DormPage_k2:not(:last-child) {
+        margin-right: 60px;
+    }
+
+.DormPage_variant_group {
+    position: absolute;
+    top: 390px;
+    width: 1137px;
+}
+
+.DormPage_variant {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 21px 8px 23px;
+    background-color: #6109D2;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+.DormPage_variant_text {
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 48px;
+    color: #7BF071;
+}
+
+.DormPage_variant_time {
+    color: #A559E0;
+    font-family: Nico_Moji;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 48px;
+}
+
+/* JoinDormPage */
+
+.JoinDormPage {
+    padding: 25px 19px 52px 66px;
+    position: absolute;
+    width: 1222px;
+    height: 700px;
+    top: 162px;
+    background-color: rgba(97, 9, 210, 0.95);
+    border-radius: 10px;
+}
+
+.JoinDormPage_title {
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 48px;
+    color: #7BF071;
+    margin-bottom: 56px;
+}
+
+.JoinDormPage_container {
+    display: flex;
+}
+
+.JoinDormPage_left {
+    width: 55%;
+}
+
+.JoinDormPage_participants {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 36px;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.JoinDormPage_participants_variant {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.JoinDormPage_participants_circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #D9D9D9;
+    margin: 0 10px 0 0;
+}
+
+.JoinDormPage_participants_name {
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 36px;
+    color: #FFFFFF;
+}
+
+.JoinDormPage_info {
+    padding: 29px 0 86px 8px;
+    box-shadow: -5px 5px #48128D;
+    margin-bottom: 49px;
+}
+
+.JoinDormPage_info_time, .JoinDormPage_info_site, .JoinDormPage_info_location {
+    font-family: Nico_Moji;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 36px;
+    color: #FFFFFF;
+}
+
+.JoinDormPage_info_time, .JoinDormPage_info_site {
+    margin-bottom: 16px;
+}
+
+.JoinDormPage_chat {
+    background-color: #D9D9D9;
+    border-radius: 10px;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 32px;
+    color: #000000;
+    padding: 5px;
+}
+
+/* FefuEventPage */
+
+.FefuEvent_container {
+    position: absolute;
+    top: 162px;
+    padding: 28px 60px 79px;
+    background-color: rgba(97, 9, 210, 0.95);
+    border-radius: 10px;
+    width: 1260px;
+    height: 700px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.FefuEvent_title {
+    font-family: Nico_Moji;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 48px;
+    color: #7BF071;
+    margin-bottom: 31px;
+    text-align: center;
+}
+
+.FefuEvent_descr {
+    font-family: Nico_Moji;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 36px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 55px;
+}
+
+.FefuEvent_botton {
+    display: flex;
+    justify-content: space-between;
+}
+
+.FefuEvent_botton_text {
+    font-family: Nico_Moji;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 36px;
+    color: #FFFFFF;
+}
+
+/* CreateDormEvent */
+
+.CreateDormEvent_container {
+    position: absolute;
+    top: 162px;
+    padding: 18px 60px;
+    background-color: rgba(97, 9, 210, 0.95);
+    border-radius: 10px;
+    width: 1260px;
+    height: 738px;
+}
+
+.CreateDormEvent_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CreateDormEvent_inp_name {
+    width: 960px;
+    height: 65px;
+    background-color: #878787;
+    border-radius: 10px;
+    color: #BEBEBE;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 32px;
+    outline: none;
+    padding: 0 10px;
+    margin-bottom: 42px;
+}
+
+    .CreateDormEvent_inp_name::placeholder {
+        color: #BEBEBE;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 32px;
+    }
+
+.CreateDormEvent_inp_descr {
+    width: 1140px;
+    height: 390px;
+    background-color: #878787;
+    border-radius: 10px;
+    color: #BEBEBE;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 32px;
+    outline: none;
+    padding: 0 10px;
+    margin-bottom: 41px;
+    resize: none;
+}
+
+    .CreateDormEvent_inp_descr::placeholder {
+        color: #BEBEBE;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 32px;
+    }
+
+.CreateDormEvent_down {
+    width: 1140px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.CreateDormEvent_time, .CreateDormEvent_location, .CreateDormEvent_quantity {
+    width: 330px;
+    height: 63px;
+    background-color: #878787;
+    border-radius: 10px;
+    color: #BEBEBE;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 32px;
+    outline: none;
+    padding: 0 10px;
+    margin-bottom: 28px;
+}
+
+    .CreateDormEvent_time::placeholder, .CreateDormEvent_location::placeholder, .CreateDormEvent_quantity::placeholder {
+        color: #BEBEBE;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 32px;
+    }
+
+.CreateDormEvent_btn {
+    font-family: Nico_Moji;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 64px;
+    color: #7BF071;
+    text-shadow: 3px 10px 10px rgba(0, 240, 255, 0.46);
+    background-color: #8A48BE;
+    border-radius: 15px;
+    border: 2px solid #8A48BE;
+    cursor: pointer;
+    padding: 3px 25px;
+    transition: 0.2s;
+}
+
+    .CreateDormEvent_btn:hover {
+        background-color: rgba(97, 9, 210, 0.95);
+        transition: 0.2s;
+    }
 
 .btn_log{
     color: rgba(123, 240, 113, 1);
@@ -226,6 +682,7 @@ body {
     line-height: 20px;
     color: #7BF071;
     text-shadow: 3px 10px 10px rgba(0, 240, 255, 0.46);
+    margin: 10px 0;
 }
 
 .profil_right__conteiner_one {
@@ -242,4 +699,20 @@ body {
     height: 170px !important;
     object-fit: cover;
     border-radius: 12px;
+}
+
+.norm_img {
+    position: fixed;
+}
+
+.bad_a {
+    display: table-cell;
+    vertical-align: middle;
+    font-family: Nico_Moji;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 5px;
+    padding-left: 10px;
+    color: rgba(123, 240, 113, 0.6);
 }
