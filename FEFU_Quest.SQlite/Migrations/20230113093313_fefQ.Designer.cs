@@ -3,6 +3,7 @@ using System;
 using FEFU_Quest.SQlite.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FEFU_Quest.SQlite.Migrations
 {
     [DbContext(typeof(FEFU_QuestDBSQlite))]
-    partial class FEFU_QuestDBSQliteModelSnapshot : ModelSnapshot
+    [Migration("20230113093313_fefQ")]
+    partial class fefQ
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.8");

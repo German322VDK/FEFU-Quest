@@ -1,5 +1,6 @@
 ﻿using FEFU_Quest.Domain.Email;
 using FEFU_Quest.Domain.Identity;
+using FEFU_Quest.Domain.Quest;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,8 @@ namespace FEFU_Quest.SQlite.Context
         public DbSet<RoleDTO> Roles { get; set; }
 
         public DbSet<EmailConfirm> EmailConfirms { get; set; }
+
+        public DbSet<FefuQuest> FefuQuests { get; set; }
 
         public FEFU_QuestDBSQlite(DbContextOptions<FEFU_QuestDBSQlite> options) : base(options) { }
     }
