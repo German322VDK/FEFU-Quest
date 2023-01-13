@@ -1,8 +1,8 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model FefuViewModel
 @{
     Layout = "_FefuLayout";
+    var week = Model.Week.Split('/')[0];
+
 }
 
 <div class="FefuPage_date">
@@ -21,7 +21,7 @@
             </defs>
         </svg>
     </div>
-    <div class="FefuPage_date_text">14-20.11.2022</div>
+    <div class="FefuPage_date_text">@week</div>
     <div class="FefuPage_date_arrow_r">
         <svg width="20" height="27" viewBox="0 0 20 27" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_f_1_134)">
@@ -39,28 +39,39 @@
     </div>
 </div>
 <div class="FefuPage_week">
-    <div class="FefuPage_week_mo">Mo</div>
-    <div class="FefuPage_week_tu">Tu</div>
-    <div class="FefuPage_week_we">We</div>
-    <div class="FefuPage_week_th">Th</div>
-    <div class="FefuPage_week_fr">Fr</div>
-    <div class="FefuPage_week_sa">Sa</div>
-    <div class="FefuPage_week_su">Su</div>
+    <div class="FW FefuPage_week_mo FefuPage_week_fr_l" data-path="Mo">Mo</div>
+    <div class="FW FefuPage_week_tu" data-path="Tu" >Tu</div>
+    <div class="FW FefuPage_week_we" data-path="We">We</div>
+    <div class="FW FefuPage_week_th" data-path="Th">Th</div>
+    <div class="FW FefuPage_week_fr " data-path="Fr">Fr</div>
+    <div class="FW FefuPage_week_sa" data-path="Sa">Sa</div>
+    <div class="FW FefuPage_week_su" data-path="Su">Su</div>
 </div>
 
-<div class="FefuPage_variant">
-    <div class="FefuPage_variant_text">День открытых дверей ДВФУ</div>
-    <div class="FefuPage_variant_text">День полуоткрытых окон ДВФУ</div>
-    <div class="FefuPage_variant_text">День приоткрытых форточек ДВФУ</div>
-    <div class="FefuPage_variant_text">День закрытых сан. узлов ДВФУ</div>
-
-    <div class="FefuPage_variant_text">День открытых дверей ДВФУ</div>
-    <div class="FefuPage_variant_text">День полуоткрытых окон ДВФУ</div>
-    <div class="FefuPage_variant_text">День приоткрытых форточек ДВФУ</div>
-    <div class="FefuPage_variant_text">День закрытых сан. узлов ДВФУ</div>
-
-    <div class="FefuPage_variant_text">День открытых дверей ДВФУ</div>
-    <div class="FefuPage_variant_text">День полуоткрытых окон ДВФУ</div>
-    <div class="FefuPage_variant_text">День приоткрытых форточек ДВФУ</div>
-    <div class="FefuPage_variant_text">День закрытых сан. узлов ДВФУ</div>
+<div class="FefuPage_variant_text FefuPage_Add">
+    <a asp-action="FefuQuestAdd" class="anti_link">Добавить</a>
 </div>
+
+@for(int i = 0; i < Model.Quests.Length; i++)
+{
+    if (Model.Quests[i] is not null)
+    {
+        var quests = Model.Quests[i];
+        string wd = ((week)i).ToString();
+
+        <div data-target="@wd" class='FefuPage_variant @(wd == "Mo" ? "FefuPage_variant_active" : "")'>
+
+            @foreach (var quest in quests)
+            {
+                <div class="FefuPage_variant_text">
+                    <a asp-action="FefuQuest" asp-route-id="@quest.Id" class="anti_link">@quest.Name</a>
+                </div>
+            }
+        </div>
+        }
+}
+
+
+
+
+<div class="FefuPage_poloska"></div>

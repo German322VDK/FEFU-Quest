@@ -1,0 +1,30 @@
+﻿@model FefuQuestModel
+@{
+    Layout = "_FefuLayout";
+}
+
+<div class="FefuEvent_container">
+    <div class="FefuEvent_text">
+        <h2 class="FefuEvent_title">@Model.Name</h2>
+        <p class="FefuEvent_descr">
+            @Model.Description
+        </p>
+    </div>
+    <div class="FefuEvent_botton">
+        <div class="FefuEvent_botton_time ffb">
+            <div class="FefuEvent_botton_text" style="font-size: 30px;">Начало: @Model.DateTimeEnd.ToString("g")</div>
+            <div class="FefuEvent_botton_text" style="font-size: 30px;">Конец: @Model.DateTimeStart.ToString("g")</div>
+        </div>
+        <div class="FefuEvent_botton_place ffb">
+            <div class="FefuEvent_botton_text" style="font-size: 30px;">Место проведения:</div>
+            <div class="FefuEvent_botton_text" style="font-size: 30px;">@Model.Place</div>
+        </div>
+        <div class="FefuEvent_botton_visiting ffb">
+            <div class="FefuEvent_botton_text" style="font-size: 30px;">Посещение:</div>
+            <div class="FefuEvent_botton_text" style="font-size: 30px;">Свободное</div>
+        </div>
+    </div>
+    <div class="FefuEvent_botton_text fefuqb">
+        <a asp-action="Fefu" class="anti_link">Назад</a>
+    </div>
+</div>

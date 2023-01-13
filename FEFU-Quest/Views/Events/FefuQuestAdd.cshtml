@@ -1,0 +1,23 @@
+﻿@using FEFU_Quest.Domain.Quest
+@model FefuQuest
+@{
+    Layout = "_FefuLayout";
+}
+
+<div class="CreateDormEvent_container">
+    <form class="CreateDormEvent_form" asp-action="FefuQuestAdd">
+        <input class="CreateDormEvent_inp_name" type="text" placeholder="Введите название" asp-for="Name">
+        <textarea class="CreateDormEvent_inp_descr" name="Description" id="Description" cols="30" rows="10" placeholder="Описание события:"></textarea>
+        <div class="CreateDormEvent_down">
+            <div class="FefuPage_variant_text" >Начало</div>
+            <input class="CreateDormEvent_time" type="datetime-local" asp-for="DateTimeStart">
+            <div class="FefuPage_variant_text">Конец</div>
+            <input class="CreateDormEvent_time" type="datetime-local" asp-for="DateTimeEnd">
+        </div>
+        <div class="CreateDormEvent_down">
+            <input class="CreateDormEvent_location" type="text" placeholder="Место" asp-for="Place">
+            <input class="CreateDormEvent_quantity" type="number" min="2" max="20" placeholder="Кол-во участников" asp-for="Count">
+        </div>
+        <input class="CreateDormEvent_btn" type='submit' value="Done">
+    </form>
+</div>
